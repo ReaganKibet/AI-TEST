@@ -1,0 +1,43 @@
+2025-04-19 13:16:20,028 - root - INFO - ==================================================
+2025-04-19 13:16:20,029 - root - INFO - Application starting up
+2025-04-19 13:16:20,029 - root - INFO - Log file: logs/app_20250419_131620.log
+2025-04-19 13:16:20,029 - root - INFO - ==================================================
+2025-04-19 13:16:20,047 - root - INFO - Memory database initialized successfully
+2025-04-19 13:16:20,061 - werkzeug - WARNING -  * Debugger is active!
+2025-04-19 13:16:20,066 - werkzeug - INFO -  * Debugger PIN: 100-947-248
+2025-04-19 13:16:31,325 - werkzeug - INFO - 172.18.0.1 - - [19/Apr/2025 13:16:31] "GET /swagger-ui/ HTTP/1.1" 200 -
+2025-04-19 13:16:31,358 - werkzeug - INFO - 172.18.0.1 - - [19/Apr/2025 13:16:31] "GET /flask-apispec/static/swagger-ui-standalone-preset.js HTTP/1.1" 200 -
+2025-04-19 13:16:31,358 - werkzeug - INFO - 172.18.0.1 - - [19/Apr/2025 13:16:31] "GET /flask-apispec/static/swagger-ui.css HTTP/1.1" 200 -
+2025-04-19 13:16:31,360 - werkzeug - INFO - 172.18.0.1 - - [19/Apr/2025 13:16:31] "GET /flask-apispec/static/swagger-ui-bundle.js HTTP/1.1" 200 -
+2025-04-19 13:16:31,458 - werkzeug - INFO - 172.18.0.1 - - [19/Apr/2025 13:16:31] "GET /swagger.json HTTP/1.1" 200 -
+2025-04-19 13:16:31,518 - werkzeug - INFO - 172.18.0.1 - - [19/Apr/2025 13:16:31] "GET /flask-apispec/static/favicon-32x32.png HTTP/1.1" 200 -
+2025-04-19 13:16:32,750 - werkzeug - INFO - 172.18.0.1 - - [19/Apr/2025 13:16:32] "GET /swagger-ui/ HTTP/1.1" 200 -
+2025-04-19 13:16:32,763 - werkzeug - INFO - 172.18.0.1 - - [19/Apr/2025 13:16:32] "[36mGET /flask-apispec/static/swagger-ui.css HTTP/1.1[0m" 304 -
+2025-04-19 13:16:32,771 - werkzeug - INFO - 172.18.0.1 - - [19/Apr/2025 13:16:32] "[36mGET /flask-apispec/static/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+2025-04-19 13:16:32,777 - werkzeug - INFO - 172.18.0.1 - - [19/Apr/2025 13:16:32] "[36mGET /flask-apispec/static/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+2025-04-19 13:16:32,856 - werkzeug - INFO - 172.18.0.1 - - [19/Apr/2025 13:16:32] "GET /swagger.json HTTP/1.1" 200 -
+2025-04-19 13:16:32,917 - werkzeug - INFO - 172.18.0.1 - - [19/Apr/2025 13:16:32] "[36mGET /flask-apispec/static/favicon-32x32.png HTTP/1.1[0m" 304 -
+2025-04-19 13:16:56,775 - root - INFO - Received prompt: a street full of lights at night
+2025-04-19 13:16:56,776 - root - INFO - Using default app IDs: ['f0997a01-d6d3-a5fe-53d8-561300318557', '69543f29-4d41-4afc-7f29-3d51591f11eb']
+2025-04-19 13:16:58,636 - root - ERROR - [f0997a01-d6d3-a5fe-53d8-561300318557] Initialization failed: HTTPSConnectionPool(host='f0997a01-d6d3-a5fe-53d8-561300318557', port=443): Max retries exceeded with url: /manifest (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcbaf47ea10>: Failed to resolve 'f0997a01-d6d3-a5fe-53d8-561300318557' ([Errno -2] Name or service not known)"))
+2025-04-19 13:17:00,452 - root - ERROR - [69543f29-4d41-4afc-7f29-3d51591f11eb] Initialization failed: HTTPSConnectionPool(host='69543f29-4d41-4afc-7f29-3d51591f11eb', port=443): Max retries exceeded with url: /manifest (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcbaf47ece0>: Failed to resolve '69543f29-4d41-4afc-7f29-3d51591f11eb' ([Errno -2] Name or service not known)"))
+2025-04-19 13:17:00,457 - root - INFO - Processing prompt through pipeline
+2025-04-19 13:17:00,468 - root - INFO - Enhancing prompt: a street full of lights at night
+2025-04-19 13:17:00,469 - root - INFO - Loading LLM model: gpt2 on cpu
+2025-04-19 13:17:09,336 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2025-04-19 13:27:00,421 - root - INFO - LLM model loaded successfully
+2025-04-19 13:27:14,732 - root - INFO - Generating image from prompt: a picture of the street lighting in your neighborhood
+
+Advanced description: a picture of the environment in your neighborhood
+
+More info
+
+Create user-defined visual images
+
+You can create user-defined visual images using your own images, which are used as elements to describe the visual elements in your image. For example, if a picture is a picture of the sky, you can create a user-defined picture of a street in your neighborhood. You can also create a user-defined image of a street in a way that makes it more interesting by adding additional information about the street and the surrounding area.
+
+For example,
+2025-04-19 13:27:14,733 - root - ERROR - Error in pipeline: Input schema not found for app ID: f0997a01-d6d3-a5fe-53d8-561300318557
+2025-04-19 13:27:14,734 - root - ERROR - Pipeline error: Input schema not found for app ID: f0997a01-d6d3-a5fe-53d8-561300318557
+2025-04-19 13:27:14,735 - root - INFO - Response prepared: 90 characters
+2025-04-19 13:27:14,737 - werkzeug - INFO - 172.18.0.1 - - [19/Apr/2025 13:27:14] "POST /execute HTTP/1.1" 200 -

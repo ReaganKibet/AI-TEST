@@ -1,0 +1,118 @@
+2025-04-19 09:22:10,487 - root - INFO - ==================================================
+2025-04-19 09:22:10,489 - root - INFO - Application starting up
+2025-04-19 09:22:10,489 - root - INFO - Log file: logs/app_20250419_092210.log
+2025-04-19 09:22:10,490 - root - INFO - ==================================================
+2025-04-19 09:22:10,582 - root - INFO - Memory database initialized successfully
+2025-04-19 09:22:10,610 - werkzeug - WARNING -  * Debugger is active!
+2025-04-19 09:22:10,617 - werkzeug - INFO -  * Debugger PIN: 263-796-106
+2025-04-19 09:22:18,527 - werkzeug - INFO - 172.21.0.1 - - [19/Apr/2025 09:22:18] "GET /swagger-ui/ HTTP/1.1" 200 -
+2025-04-19 09:22:18,590 - werkzeug - INFO - 172.21.0.1 - - [19/Apr/2025 09:22:18] "GET /flask-apispec/static/swagger-ui.css HTTP/1.1" 200 -
+2025-04-19 09:22:18,601 - werkzeug - INFO - 172.21.0.1 - - [19/Apr/2025 09:22:18] "GET /flask-apispec/static/swagger-ui-standalone-preset.js HTTP/1.1" 200 -
+2025-04-19 09:22:18,602 - werkzeug - INFO - 172.21.0.1 - - [19/Apr/2025 09:22:18] "GET /flask-apispec/static/swagger-ui-bundle.js HTTP/1.1" 200 -
+2025-04-19 09:22:19,115 - werkzeug - INFO - 172.21.0.1 - - [19/Apr/2025 09:22:19] "GET /swagger.json HTTP/1.1" 200 -
+2025-04-19 09:22:19,291 - werkzeug - INFO - 172.21.0.1 - - [19/Apr/2025 09:22:19] "GET /flask-apispec/static/favicon-32x32.png HTTP/1.1" 200 -
+2025-04-19 09:22:40,471 - root - INFO - Received prompt: Generate a cloudy sky
+2025-04-19 09:22:40,473 - root - INFO - Using default app IDs: ['f0997a01-d6d3-a5fe-53d8-561300318557', '69543f29-4d41-4afc-7f29-3d51591f11eb']
+2025-04-19 09:22:48,538 - root - ERROR - [f0997a01-d6d3-a5fe-53d8-561300318557] Initialization failed: HTTPSConnectionPool(host='f0997a01-d6d3-a5fe-53d8-561300318557', port=443): Max retries exceeded with url: /manifest (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f7c9b7bfa30>: Failed to resolve 'f0997a01-d6d3-a5fe-53d8-561300318557' ([Errno -3] Temporary failure in name resolution)"))
+2025-04-19 09:22:56,547 - root - ERROR - [69543f29-4d41-4afc-7f29-3d51591f11eb] Initialization failed: HTTPSConnectionPool(host='69543f29-4d41-4afc-7f29-3d51591f11eb', port=443): Max retries exceeded with url: /manifest (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f7c9b7bee60>: Failed to resolve '69543f29-4d41-4afc-7f29-3d51591f11eb' ([Errno -3] Temporary failure in name resolution)"))
+2025-04-19 09:22:56,549 - root - INFO - Processing prompt through pipeline
+2025-04-19 09:22:56,575 - root - INFO - Enhancing prompt: Generate a cloudy sky
+2025-04-19 09:22:56,576 - root - INFO - Loading LLM model: gpt2 on cpu
+2025-04-19 09:23:12,396 - root - INFO - Available RAM: 6.22 GB
+2025-04-19 09:23:12,397 - root - INFO - Using 4-bit quantization for model
+2025-04-19 09:23:16,583 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2025-04-19 09:27:44,183 - root - ERROR - Failed to initialize Transformers model: 
+                        Some modules are dispatched on the CPU or the disk. Make sure you have enough GPU RAM to fit
+                        the quantized model. If you want to dispatch the model on the CPU or the disk while keeping
+                        these modules in 32-bit, you need to set `load_in_8bit_fp32_cpu_offload=True` and pass a custom
+                        `device_map` to `from_pretrained`. Check
+                        https://huggingface.co/docs/transformers/main/en/main_classes/quantization#offload-between-cpu-and-gpu
+                        for more details.
+                        
+Traceback (most recent call last):
+  File "/app/app/llm_manager.py", line 144, in _initialize_transformers_model
+    self.model = AutoModelForCausalLM.from_pretrained(
+  File "/usr/local/lib/python3.10/site-packages/transformers/models/auto/auto_factory.py", line 484, in from_pretrained
+    return model_class.from_pretrained(
+  File "/usr/local/lib/python3.10/site-packages/transformers/modeling_utils.py", line 2819, in from_pretrained
+    raise ValueError(
+ValueError: 
+                        Some modules are dispatched on the CPU or the disk. Make sure you have enough GPU RAM to fit
+                        the quantized model. If you want to dispatch the model on the CPU or the disk while keeping
+                        these modules in 32-bit, you need to set `load_in_8bit_fp32_cpu_offload=True` and pass a custom
+                        `device_map` to `from_pretrained`. Check
+                        https://huggingface.co/docs/transformers/main/en/main_classes/quantization#offload-between-cpu-and-gpu
+                        for more details.
+                        
+2025-04-19 09:27:44,187 - root - ERROR - Failed to initialize LLM: 
+                        Some modules are dispatched on the CPU or the disk. Make sure you have enough GPU RAM to fit
+                        the quantized model. If you want to dispatch the model on the CPU or the disk while keeping
+                        these modules in 32-bit, you need to set `load_in_8bit_fp32_cpu_offload=True` and pass a custom
+                        `device_map` to `from_pretrained`. Check
+                        https://huggingface.co/docs/transformers/main/en/main_classes/quantization#offload-between-cpu-and-gpu
+                        for more details.
+                        
+Traceback (most recent call last):
+  File "/app/app/llm_manager.py", line 76, in initialize
+    self._initialize_transformers_model()
+  File "/app/app/llm_manager.py", line 144, in _initialize_transformers_model
+    self.model = AutoModelForCausalLM.from_pretrained(
+  File "/usr/local/lib/python3.10/site-packages/transformers/models/auto/auto_factory.py", line 484, in from_pretrained
+    return model_class.from_pretrained(
+  File "/usr/local/lib/python3.10/site-packages/transformers/modeling_utils.py", line 2819, in from_pretrained
+    raise ValueError(
+ValueError: 
+                        Some modules are dispatched on the CPU or the disk. Make sure you have enough GPU RAM to fit
+                        the quantized model. If you want to dispatch the model on the CPU or the disk while keeping
+                        these modules in 32-bit, you need to set `load_in_8bit_fp32_cpu_offload=True` and pass a custom
+                        `device_map` to `from_pretrained`. Check
+                        https://huggingface.co/docs/transformers/main/en/main_classes/quantization#offload-between-cpu-and-gpu
+                        for more details.
+                        
+2025-04-19 09:27:44,189 - root - WARNING - Initializing fallback model (GPT-2 small)
+2025-04-19 09:28:00,404 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2025-04-19 09:31:49,617 - root - INFO - Fallback model initialized successfully
+2025-04-19 09:31:49,733 - root - ERROR - Error enhancing prompt: "LayerNormKernelImpl" not implemented for 'Half'
+Traceback (most recent call last):
+  File "/app/app/llm_manager.py", line 234, in enhance_prompt
+    output = self.pipe(input_text, max_new_tokens=256, temperature=0.7)
+  File "/usr/local/lib/python3.10/site-packages/transformers/pipelines/text_generation.py", line 201, in __call__
+    return super().__call__(text_inputs, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/transformers/pipelines/base.py", line 1120, in __call__
+    return self.run_single(inputs, preprocess_params, forward_params, postprocess_params)
+  File "/usr/local/lib/python3.10/site-packages/transformers/pipelines/base.py", line 1127, in run_single
+    model_outputs = self.forward(model_inputs, **forward_params)
+  File "/usr/local/lib/python3.10/site-packages/transformers/pipelines/base.py", line 1026, in forward
+    model_outputs = self._forward(model_inputs, **forward_params)
+  File "/usr/local/lib/python3.10/site-packages/transformers/pipelines/text_generation.py", line 263, in _forward
+    generated_sequence = self.model.generate(input_ids=input_ids, attention_mask=attention_mask, **generate_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/transformers/generation/utils.py", line 1572, in generate
+    return self.sample(
+  File "/usr/local/lib/python3.10/site-packages/transformers/generation/utils.py", line 2619, in sample
+    outputs = self(
+  File "/usr/local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1080, in forward
+    transformer_outputs = self.transformer(
+  File "/usr/local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 903, in forward
+    outputs = block(
+  File "/usr/local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 390, in forward
+    hidden_states = self.ln_1(hidden_states)
+  File "/usr/local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/torch/nn/modules/normalization.py", line 190, in forward
+    return F.layer_norm(
+  File "/usr/local/lib/python3.10/site-packages/torch/nn/functional.py", line 2515, in layer_norm
+    return torch.layer_norm(input, normalized_shape, weight, bias, eps, torch.backends.cudnn.enabled)
+RuntimeError: "LayerNormKernelImpl" not implemented for 'Half'
+2025-04-19 09:31:49,751 - root - INFO - Generating image from prompt: Generate a cloudy sky with dramatic lighting, detailed textures, and vibrant colors
+2025-04-19 09:31:49,753 - root - ERROR - Error in pipeline: Input schema not found for app ID: f0997a01-d6d3-a5fe-53d8-561300318557
+2025-04-19 09:31:49,754 - root - ERROR - Pipeline error: Input schema not found for app ID: f0997a01-d6d3-a5fe-53d8-561300318557
+2025-04-19 09:31:49,756 - root - INFO - Response prepared: 90 characters
+2025-04-19 09:31:49,763 - werkzeug - INFO - 172.21.0.1 - - [19/Apr/2025 09:31:49] "POST /execute HTTP/1.1" 200 -

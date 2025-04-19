@@ -1,3 +1,4 @@
+# llm_manager.py 
 import os
 import logging
 import json
@@ -126,55 +127,27 @@ class LLMManager:
             # Load tokenizer
             self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
             
-            # Determine quantization based on available RAM
-            import psutil
-            available_ram_gb = psutil.virtual_memory().available / (1024 ** 3)
-            logging.info(f"Available RAM: {available_ram_gb:.2f} GB")
+            # Force CPU only loading and FP32 precision to avoid half-precision errors
+            # Set low_cpu_mem_usage to optimize memory usage
+            self.model = AutoModelForCausalLM.from_pretrained(
+                self.model_name,
+                torch_dtype=torch.float32,  # Force FP32 precision
+                device_map="cpu",  # Force CPU
+                low_cpu_mem_usage=True,  # Optimize memory usage
+                offload_folder="offload_folder"  # Enable disk offloading
+            )
             
-            load_in_8bit = available_ram_gb < 12  # Use 8-bit quantization if less than 12GB available
-            load_in_4bit = available_ram_gb < 8   # Use 4-bit quantization if less than 8GB available
+            # Move model to CPU explicitly
+            self.model = self.model.to("cpu")
             
-            # Load model with appropriate quantization
-            if load_in_4bit:
-                logging.info("Using 4-bit quantization for model")
-                try:
-                    try:
-                        import bitsandbytes as bnb
-                        self.model = AutoModelForCausalLM.from_pretrained(
-                            self.model_name,
-                            device_map="auto",
-                            load_in_4bit=True,
-                            bnb_4bit_compute_dtype=torch.float16
-                        )
-                    except ImportError:
-                        logging.warning("bitsandbytes not available, skipping 4-bit quantization")
-                        load_in_4bit = False
-                except ImportError:
-                    logging.warning("bitsandbytes not available, falling back to 8-bit")
-                    load_in_4bit = False
-                    load_in_8bit = True
-            
-            if load_in_8bit and not load_in_4bit:
-                logging.info("Using 8-bit quantization for model")
-                self.model = AutoModelForCausalLM.from_pretrained(
-                    self.model_name,
-                    device_map="auto",
-                    load_in_8bit=True
-                )
-            elif not load_in_4bit:
-                logging.info("Loading model in full precision")
-                self.model = AutoModelForCausalLM.from_pretrained(
-                    self.model_name,
-                    device_map="auto"
-                )
-            
-            # Create pipeline
+            # Create pipeline with explicit CPU mapping
             self.pipe = pipeline(
                 "text-generation",
                 model=self.model,
                 tokenizer=self.tokenizer,
                 max_length=512,
-                device_map="auto"
+                device="cpu",  # Force CPU
+                torch_dtype=torch.float32  # Force full precision
             )
             
         except Exception as e:
@@ -189,23 +162,46 @@ class LLMManager:
             if not TRANSFORMERS_AVAILABLE:
                 raise ImportError("Transformers library required even for fallback")
                 
-            self.model_name = "distilgpt2"  # Very small model that should run anywhere
+            # Use the smallest possible model - distilgpt2
+            self.model_name = "distilgpt2"
             self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
-            self.model = AutoModelForCausalLM.from_pretrained(self.model_name)
             
+            # Force CPU and FP32 precision to avoid half-precision errors
+            self.model = AutoModelForCausalLM.from_pretrained(
+                self.model_name,
+                torch_dtype=torch.float32,  # Force FP32 precision
+                device_map="cpu",  # Force CPU usage
+                low_cpu_mem_usage=True  # Optimize memory usage
+            )
+            
+            # Create text generation pipeline
             self.pipe = pipeline(
                 "text-generation",
                 model=self.model,
                 tokenizer=self.tokenizer,
                 max_length=256,
-                device_map="auto"
+                device="cpu",  # Force CPU
+                torch_dtype=torch.float32  # Force full precision
             )
             
             self.initialized = True
             logging.info("Fallback model initialized successfully")
         except Exception as e:
             logging.error(f"Failed to initialize fallback model: {e}", exc_info=True)
-            raise
+            self._initialize_simple_text_fallback()
+    
+    def _initialize_simple_text_fallback(self):
+        """Initialize a no-model text fallback when everything else fails."""
+        logging.warning("Initializing simple text-based fallback (no model)")
+        
+        # Create a simple function that just adds predefined details to prompts
+        def simple_text_enhance(prompt, max_new_tokens=None, temperature=None):
+            enhanced = f"{prompt} with detailed textures, dramatic lighting, vibrant colors, and artistic composition"
+            return [{"generated_text": enhanced}]
+            
+        self.pipe = simple_text_enhance
+        self.initialized = True
+        logging.info("Simple text fallback initialized")
     
     def enhance_prompt(self, prompt: str) -> str:
         """
@@ -227,18 +223,22 @@ class LLMManager:
             
             # Generate enhanced text
             if self.pipe:
-                output = self.pipe(input_text, max_new_tokens=256, temperature=0.7)
-                if isinstance(output, list):
-                    generated_text = output[0]['generated_text']
-                else:
-                    generated_text = output
-                    
-                # Extract the enhanced part
-                enhanced_prompt = generated_text[len(input_text):].strip()
-                if not enhanced_prompt:
-                    # Fallback if enhancement is empty
-                    enhanced_prompt = f"{prompt} with dramatic lighting, detailed textures, and vibrant colors"
-                return enhanced_prompt
+                try:
+                    output = self.pipe(input_text, max_new_tokens=128, temperature=0.7)  # Reduced token count to save memory
+                    if isinstance(output, list):
+                        generated_text = output[0]['generated_text']
+                    else:
+                        generated_text = output
+                        
+                    # Extract the enhanced part
+                    enhanced_prompt = generated_text[len(input_text):].strip()
+                    if not enhanced_prompt:
+                        # Fallback if enhancement is empty
+                        enhanced_prompt = f"{prompt} with dramatic lighting, detailed textures, and vibrant colors"
+                    return enhanced_prompt
+                except RuntimeError as e:
+                    logging.error(f"Runtime error during prompt enhancement: {e}")
+                    return f"{prompt} with dramatic lighting, detailed textures, and vibrant colors"
             else:
                 # Fallback if model is not available
                 return f"{prompt} with dramatic lighting, detailed textures, and vibrant colors"

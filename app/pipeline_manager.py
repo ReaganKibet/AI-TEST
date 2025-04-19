@@ -10,6 +10,9 @@ from llm_manager import LLMManager
 from app.image_manager import ImageManager
 from app.memory_manager import MemoryManager
 from core.stub import Stub
+# Add these imports at the top of your file:
+from mock_image_service import MockImageGenerator
+from app_id_handler import AppIDManager
 
 class PipelineManager:
     """
@@ -30,6 +33,8 @@ class PipelineManager:
         self.llm = llm
         self.image_mgr = image_mgr
         self.memory_mgr = memory_mgr
+        self.mock_image_generator = MockImageGenerator()
+        self.app_id_manager = AppIDManager()
         
         # Set app IDs for text-to-image and image-to-3D
         self.text_to_image_app_id = "f0997a01-d6d3-a5fe-53d8-561300318557"
@@ -199,3 +204,68 @@ class PipelineManager:
                 time.sleep(2)
         
         return None
+
+    def execute(self, prompt: str) -> Dict[str, Any]:
+        """
+        Execute the creative AI pipeline based on the prompt.
+        
+        Args:
+            prompt (str): The user-provided prompt.
+            
+        Returns:
+            Dict[str, Any]: The result of the pipeline execution.
+        """
+        try:
+            logging.info(f"Received prompt: {prompt}")
+            
+            # Get app IDs from AppIDManager
+            text_to_image_app_id = self.app_id_manager.get_text_to_image_app_id() or self.text_to_image_app_id
+            image_to_3d_app_id = self.app_id_manager.get_image_to_3d_app_id() or self.image_to_3d_app_id
+            
+            # Enhance the prompt using LLM
+            logging.info("Enhancing prompt with LLM")
+            enhanced_prompt = self.llm.enhance_prompt(prompt)
+            
+            # Generate image
+            logging.info("Generating image")
+            try:
+                if not self.app_id_manager.should_use_mock_service("text_to_image"):
+                    image_result = self._generate_image(enhanced_prompt)
+                    if not image_result:
+                        raise Exception("Failed to generate image using real service")
+                else:
+                    raise Exception("Using mock service by design")
+            except Exception as e:
+                logging.warning(f"Falling back to mock image service: {e}")
+                image_path = self.mock_image_generator.generate_image(enhanced_prompt)
+                return {
+                    "status": "success",
+                    "message": "Image generated using mock service",
+                    "image_url": image_path,
+                    "prompt": enhanced_prompt
+                }
+            
+            # Generate 3D model
+            logging.info("Generating 3D model")
+            model_result = self._generate_3d_model(image_result["image_path"])
+            if not model_result:
+                raise Exception("Failed to generate 3D model")
+            
+            # Return the final result
+            return {
+                "status": "success",
+                "message": "Pipeline executed successfully",
+                "image_url": image_result["image"],
+                "model_url": model_result["model"],
+                "prompt": enhanced_prompt
+            }
+        
+        except Exception as e:
+            logging.error(f"Error in pipeline execution: {e}")
+            return {
+                "status": "error",
+                "message": f"An error occurred: {str(e)}",
+                "image_url": None,
+                "model_url": None,
+                "prompt": prompt
+            }
