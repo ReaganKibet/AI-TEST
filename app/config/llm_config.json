@@ -1,0 +1,10 @@
+{
+    "model_name": "gpt2",
+    "device": "cpu",
+    "max_tokens": 256,
+    "temperature": 0.7,
+    "top_p": 0.9,
+    "prompt_templates": {
+      "enhance": "You are an expert in generating detailed image descriptions. Take the user's input and enhance it with vivid details, artistic style, lighting, perspective, and mood. Keep your response concise and focused on visual elements only. Don't add explanations or questions.\n\nUser input: {prompt}\n\nEnhanced description:"
+    }
+}

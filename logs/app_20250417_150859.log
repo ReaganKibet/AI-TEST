@@ -1,0 +1,21 @@
+2025-04-17 15:08:59,661 - root - INFO - ==================================================
+2025-04-17 15:08:59,662 - root - INFO - Application starting up
+2025-04-17 15:08:59,662 - root - INFO - Log file: logs/app_20250417_150859.log
+2025-04-17 15:08:59,663 - root - INFO - ==================================================
+2025-04-17 15:08:59,693 - root - INFO - Memory database initialized successfully
+2025-04-17 15:08:59,912 - werkzeug - WARNING -  * Debugger is active!
+2025-04-17 15:08:59,915 - werkzeug - INFO -  * Debugger PIN: 794-404-087
+2025-04-17 15:09:57,327 - werkzeug - INFO - 172.21.0.1 - - [17/Apr/2025 15:09:57] "[33mGET /swagger-ui/ HTTP/1.1[0m" 404 -
+2025-04-17 15:10:37,908 - werkzeug - INFO - 172.21.0.1 - - [17/Apr/2025 15:10:37] "GET / HTTP/1.1" 200 -
+2025-04-17 15:10:42,222 - root - ERROR - Error in /execute endpoint: AppModel() takes no arguments
+Traceback (most recent call last):
+  File "/app/app/main.py", line 256, in execute_endpoint
+    model = AppModel(request=InputClass(prompt=input_data.get("prompt")))
+TypeError: AppModel() takes no arguments
+2025-04-17 15:10:42,224 - werkzeug - INFO - 172.21.0.1 - - [17/Apr/2025 15:10:42] "[35m[1mPOST /execute HTTP/1.1[0m" 500 -
+2025-04-17 15:11:08,699 - root - ERROR - Error in /execute endpoint: AppModel() takes no arguments
+Traceback (most recent call last):
+  File "/app/app/main.py", line 256, in execute_endpoint
+    model = AppModel(request=InputClass(prompt=input_data.get("prompt")))
+TypeError: AppModel() takes no arguments
+2025-04-17 15:11:08,701 - werkzeug - INFO - 172.21.0.1 - - [17/Apr/2025 15:11:08] "[35m[1mPOST /execute HTTP/1.1[0m" 500 -

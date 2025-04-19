@@ -1,0 +1,133 @@
+2025-04-18 13:39:02,602 - root - INFO - ==================================================
+2025-04-18 13:39:02,603 - root - INFO - Application starting up
+2025-04-18 13:39:02,603 - root - INFO - Log file: logs/app_20250418_133902.log
+2025-04-18 13:39:02,604 - root - INFO - ==================================================
+2025-04-18 13:39:02,626 - root - INFO - Memory database initialized successfully
+2025-04-18 13:39:02,646 - werkzeug - WARNING -  * Debugger is active!
+2025-04-18 13:39:02,652 - werkzeug - INFO -  * Debugger PIN: 753-051-348
+2025-04-18 13:39:08,495 - werkzeug - INFO - 172.21.0.1 - - [18/Apr/2025 13:39:08] "GET /swagger-ui/ HTTP/1.1" 200 -
+2025-04-18 13:39:08,588 - werkzeug - INFO - 172.21.0.1 - - [18/Apr/2025 13:39:08] "GET /flask-apispec/static/swagger-ui-bundle.js HTTP/1.1" 200 -
+2025-04-18 13:39:08,588 - werkzeug - INFO - 172.21.0.1 - - [18/Apr/2025 13:39:08] "GET /flask-apispec/static/swagger-ui.css HTTP/1.1" 200 -
+2025-04-18 13:39:08,589 - werkzeug - INFO - 172.21.0.1 - - [18/Apr/2025 13:39:08] "GET /flask-apispec/static/swagger-ui-standalone-preset.js HTTP/1.1" 200 -
+2025-04-18 13:39:08,831 - werkzeug - INFO - 172.21.0.1 - - [18/Apr/2025 13:39:08] "GET /swagger.json HTTP/1.1" 200 -
+2025-04-18 13:39:08,896 - werkzeug - INFO - 172.21.0.1 - - [18/Apr/2025 13:39:08] "GET /flask-apispec/static/favicon-32x32.png HTTP/1.1" 200 -
+2025-04-18 13:39:56,102 - root - INFO - Received prompt: Design a cyberpunk city skyline at night
+2025-04-18 13:39:56,103 - root - INFO - Using default app IDs: ['f0997a01-d6d3-a5fe-53d8-561300318557', '69543f29-4d41-4afc-7f29-3d51591f11eb']
+2025-04-18 13:39:56,105 - root - INFO - [f0997a01-d6d3-a5fe-53d8-561300318557] Mock manifest loaded.
+2025-04-18 13:39:56,109 - root - INFO - [f0997a01-d6d3-a5fe-53d8-561300318557] Mock input schema loaded.
+2025-04-18 13:39:56,109 - root - INFO - [f0997a01-d6d3-a5fe-53d8-561300318557] Mock output schema loaded.
+2025-04-18 13:39:56,111 - root - INFO - [f0997a01-d6d3-a5fe-53d8-561300318557] Mock connection established.
+2025-04-18 13:39:56,113 - root - INFO - [69543f29-4d41-4afc-7f29-3d51591f11eb] Mock manifest loaded.
+2025-04-18 13:39:56,114 - root - INFO - [69543f29-4d41-4afc-7f29-3d51591f11eb] Mock input schema loaded.
+2025-04-18 13:39:56,116 - root - INFO - [69543f29-4d41-4afc-7f29-3d51591f11eb] Mock output schema loaded.
+2025-04-18 13:39:56,119 - root - INFO - [69543f29-4d41-4afc-7f29-3d51591f11eb] Mock connection established.
+2025-04-18 13:39:56,120 - root - INFO - Processing prompt through pipeline
+2025-04-18 13:39:56,136 - root - INFO - Enhancing prompt: Design a cyberpunk city skyline at night
+2025-04-18 13:39:56,137 - root - INFO - Loading LLM model: gpt2 on cpu
+2025-04-18 13:40:00,850 - root - INFO - Available RAM: 6.27 GB
+2025-04-18 13:40:00,852 - root - INFO - Using 4-bit quantization for model
+2025-04-18 13:40:42,396 - root - ERROR - Failed to initialize Transformers model: 
+                        Some modules are dispatched on the CPU or the disk. Make sure you have enough GPU RAM to fit
+                        the quantized model. If you want to dispatch the model on the CPU or the disk while keeping
+                        these modules in 32-bit, you need to set `load_in_8bit_fp32_cpu_offload=True` and pass a custom
+                        `device_map` to `from_pretrained`. Check
+                        https://huggingface.co/docs/transformers/main/en/main_classes/quantization#offload-between-cpu-and-gpu
+                        for more details.
+                        
+Traceback (most recent call last):
+  File "/app/app/llm_manager.py", line 152, in _initialize_transformers_model
+    self.model = AutoModelForCausalLM.from_pretrained(
+  File "/usr/local/lib/python3.10/site-packages/transformers/models/auto/auto_factory.py", line 484, in from_pretrained
+    return model_class.from_pretrained(
+  File "/usr/local/lib/python3.10/site-packages/transformers/modeling_utils.py", line 2819, in from_pretrained
+    raise ValueError(
+ValueError: 
+                        Some modules are dispatched on the CPU or the disk. Make sure you have enough GPU RAM to fit
+                        the quantized model. If you want to dispatch the model on the CPU or the disk while keeping
+                        these modules in 32-bit, you need to set `load_in_8bit_fp32_cpu_offload=True` and pass a custom
+                        `device_map` to `from_pretrained`. Check
+                        https://huggingface.co/docs/transformers/main/en/main_classes/quantization#offload-between-cpu-and-gpu
+                        for more details.
+                        
+2025-04-18 13:40:42,399 - root - ERROR - Failed to initialize LLM: 
+                        Some modules are dispatched on the CPU or the disk. Make sure you have enough GPU RAM to fit
+                        the quantized model. If you want to dispatch the model on the CPU or the disk while keeping
+                        these modules in 32-bit, you need to set `load_in_8bit_fp32_cpu_offload=True` and pass a custom
+                        `device_map` to `from_pretrained`. Check
+                        https://huggingface.co/docs/transformers/main/en/main_classes/quantization#offload-between-cpu-and-gpu
+                        for more details.
+                        
+Traceback (most recent call last):
+  File "/app/app/llm_manager.py", line 83, in initialize
+    self._initialize_transformers_model()
+  File "/app/app/llm_manager.py", line 152, in _initialize_transformers_model
+    self.model = AutoModelForCausalLM.from_pretrained(
+  File "/usr/local/lib/python3.10/site-packages/transformers/models/auto/auto_factory.py", line 484, in from_pretrained
+    return model_class.from_pretrained(
+  File "/usr/local/lib/python3.10/site-packages/transformers/modeling_utils.py", line 2819, in from_pretrained
+    raise ValueError(
+ValueError: 
+                        Some modules are dispatched on the CPU or the disk. Make sure you have enough GPU RAM to fit
+                        the quantized model. If you want to dispatch the model on the CPU or the disk while keeping
+                        these modules in 32-bit, you need to set `load_in_8bit_fp32_cpu_offload=True` and pass a custom
+                        `device_map` to `from_pretrained`. Check
+                        https://huggingface.co/docs/transformers/main/en/main_classes/quantization#offload-between-cpu-and-gpu
+                        for more details.
+                        
+2025-04-18 13:40:42,402 - root - WARNING - Initializing fallback model (GPT-2 small)
+2025-04-18 13:41:16,239 - root - INFO - Fallback model initialized successfully
+2025-04-18 13:41:16,270 - root - ERROR - Error enhancing prompt: "LayerNormKernelImpl" not implemented for 'Half'
+Traceback (most recent call last):
+  File "/app/app/llm_manager.py", line 242, in enhance_prompt
+    output = self.pipe(input_text, max_new_tokens=256, temperature=0.7)
+  File "/usr/local/lib/python3.10/site-packages/transformers/pipelines/text_generation.py", line 201, in __call__
+    return super().__call__(text_inputs, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/transformers/pipelines/base.py", line 1120, in __call__
+    return self.run_single(inputs, preprocess_params, forward_params, postprocess_params)
+  File "/usr/local/lib/python3.10/site-packages/transformers/pipelines/base.py", line 1127, in run_single
+    model_outputs = self.forward(model_inputs, **forward_params)
+  File "/usr/local/lib/python3.10/site-packages/transformers/pipelines/base.py", line 1026, in forward
+    model_outputs = self._forward(model_inputs, **forward_params)
+  File "/usr/local/lib/python3.10/site-packages/transformers/pipelines/text_generation.py", line 263, in _forward
+    generated_sequence = self.model.generate(input_ids=input_ids, attention_mask=attention_mask, **generate_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/transformers/generation/utils.py", line 1572, in generate
+    return self.sample(
+  File "/usr/local/lib/python3.10/site-packages/transformers/generation/utils.py", line 2619, in sample
+    outputs = self(
+  File "/usr/local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/accelerate/hooks.py", line 165, in new_forward
+    output = old_forward(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1080, in forward
+    transformer_outputs = self.transformer(
+  File "/usr/local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/accelerate/hooks.py", line 165, in new_forward
+    output = old_forward(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 903, in forward
+    outputs = block(
+  File "/usr/local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/accelerate/hooks.py", line 165, in new_forward
+    output = old_forward(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 390, in forward
+    hidden_states = self.ln_1(hidden_states)
+  File "/usr/local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/accelerate/hooks.py", line 165, in new_forward
+    output = old_forward(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/torch/nn/modules/normalization.py", line 190, in forward
+    return F.layer_norm(
+  File "/usr/local/lib/python3.10/site-packages/torch/nn/functional.py", line 2515, in layer_norm
+    return torch.layer_norm(input, normalized_shape, weight, bias, eps, torch.backends.cudnn.enabled)
+RuntimeError: "LayerNormKernelImpl" not implemented for 'Half'
+2025-04-18 13:41:16,276 - root - INFO - Generating image from prompt: Design a cyberpunk city skyline at night
+2025-04-18 13:41:16,277 - root - INFO - Mock execution for f0997a01-d6d3-a5fe-53d8-561300318557 with data: {'prompt': 'Design a cyberpunk city skyline at night', 'negative_prompt': 'blurry, low quality, distorted, watermark', 'width': 512, 'height': 512, 'num_inference_steps': 30, 'guidance_scale': 7.5}
+2025-04-18 13:41:16,278 - root - INFO - [f0997a01-d6d3-a5fe-53d8-561300318557] Output: {'image': '', 'metadata': {'prompt': 'Design a cyberpunk city skyline at night', 'app_id': 'f0997a01-d6d3-a5fe-53d8-561300318557'}}
+2025-04-18 13:41:16,373 - root - ERROR - Error saving image: cannot identify image file <_io.BytesIO object at 0x7f0121301580>
+2025-04-18 13:41:16,374 - root - ERROR - Error in pipeline: cannot identify image file <_io.BytesIO object at 0x7f0121301580>
+2025-04-18 13:41:16,374 - root - ERROR - Pipeline error: cannot identify image file <_io.BytesIO object at 0x7f0121301580>
+2025-04-18 13:41:16,375 - root - INFO - Response prepared: 84 characters
+2025-04-18 13:41:16,377 - werkzeug - INFO - 172.21.0.1 - - [18/Apr/2025 13:41:16] "POST /execute HTTP/1.1" 200 -

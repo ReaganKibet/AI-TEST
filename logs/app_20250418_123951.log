@@ -1,0 +1,128 @@
+2025-04-18 12:39:51,613 - root - INFO - ==================================================
+2025-04-18 12:39:51,614 - root - INFO - Application starting up
+2025-04-18 12:39:51,614 - root - INFO - Log file: logs/app_20250418_123951.log
+2025-04-18 12:39:51,615 - root - INFO - ==================================================
+2025-04-18 12:39:51,645 - root - INFO - Memory database initialized successfully
+2025-04-18 12:39:51,665 - werkzeug - WARNING -  * Debugger is active!
+2025-04-18 12:39:51,672 - werkzeug - INFO -  * Debugger PIN: 462-866-945
+2025-04-18 12:40:12,747 - werkzeug - INFO - 172.21.0.1 - - [18/Apr/2025 12:40:12] "GET /swagger-ui/ HTTP/1.1" 200 -
+2025-04-18 12:40:12,815 - werkzeug - INFO - 172.21.0.1 - - [18/Apr/2025 12:40:12] "GET /flask-apispec/static/swagger-ui-standalone-preset.js HTTP/1.1" 200 -
+2025-04-18 12:40:12,816 - werkzeug - INFO - 172.21.0.1 - - [18/Apr/2025 12:40:12] "GET /flask-apispec/static/swagger-ui-bundle.js HTTP/1.1" 200 -
+2025-04-18 12:40:12,818 - werkzeug - INFO - 172.21.0.1 - - [18/Apr/2025 12:40:12] "GET /flask-apispec/static/swagger-ui.css HTTP/1.1" 200 -
+2025-04-18 12:40:12,983 - werkzeug - INFO - 172.21.0.1 - - [18/Apr/2025 12:40:12] "GET /swagger.json HTTP/1.1" 200 -
+2025-04-18 12:40:13,088 - werkzeug - INFO - 172.21.0.1 - - [18/Apr/2025 12:40:13] "GET /flask-apispec/static/favicon-32x32.png HTTP/1.1" 200 -
+2025-04-18 12:40:24,804 - root - INFO - Received prompt: Design a cyberpunk city skyline at night
+2025-04-18 12:40:24,805 - root - INFO - Using default app IDs: ['f0997a01-d6d3-a5fe-53d8-561300318557', '69543f29-4d41-4afc-7f29-3d51591f11eb']
+2025-04-18 12:40:26,858 - root - ERROR - [f0997a01-d6d3-a5fe-53d8-561300318557] Initialization failed: HTTPSConnectionPool(host='f0997a01-d6d3-a5fe-53d8-561300318557', port=443): Max retries exceeded with url: /manifest (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f1bd13fee00>: Failed to resolve 'f0997a01-d6d3-a5fe-53d8-561300318557' ([Errno -2] Name or service not known)"))
+2025-04-18 12:40:28,879 - root - ERROR - [69543f29-4d41-4afc-7f29-3d51591f11eb] Initialization failed: HTTPSConnectionPool(host='69543f29-4d41-4afc-7f29-3d51591f11eb', port=443): Max retries exceeded with url: /manifest (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f1bd13ffd60>: Failed to resolve '69543f29-4d41-4afc-7f29-3d51591f11eb' ([Errno -2] Name or service not known)"))
+2025-04-18 12:40:28,880 - root - INFO - Processing prompt through pipeline
+2025-04-18 12:40:28,896 - root - INFO - Enhancing prompt: Design a cyberpunk city skyline at night
+2025-04-18 12:40:28,896 - root - INFO - Loading LLM model: gpt2 on cpu
+2025-04-18 12:40:35,064 - root - INFO - Available RAM: 6.25 GB
+2025-04-18 12:40:35,064 - root - INFO - Using 4-bit quantization for model
+2025-04-18 12:40:35,092 - root - WARNING - bitsandbytes not available, skipping 4-bit quantization
+2025-04-18 12:40:35,093 - root - INFO - Using 8-bit quantization for model
+2025-04-18 12:40:35,648 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2025-04-18 12:41:18,475 - root - ERROR - Failed to initialize Transformers model: No module named 'scipy'
+Traceback (most recent call last):
+  File "/app/app/llm_manager.py", line 159, in _initialize_transformers_model
+    self.model = AutoModelForCausalLM.from_pretrained(
+  File "/usr/local/lib/python3.10/site-packages/transformers/models/auto/auto_factory.py", line 484, in from_pretrained
+    return model_class.from_pretrained(
+  File "/usr/local/lib/python3.10/site-packages/transformers/modeling_utils.py", line 2685, in from_pretrained
+    from .utils.bitsandbytes import get_keys_to_not_convert, replace_with_bnb_linear
+  File "/usr/local/lib/python3.10/site-packages/transformers/utils/bitsandbytes.py", line 11, in <module>
+    import bitsandbytes as bnb
+  File "/usr/local/lib/python3.10/site-packages/bitsandbytes/__init__.py", line 6, in <module>
+    from . import cuda_setup, utils, research
+  File "/usr/local/lib/python3.10/site-packages/bitsandbytes/research/__init__.py", line 1, in <module>
+    from . import nn
+  File "/usr/local/lib/python3.10/site-packages/bitsandbytes/research/nn/__init__.py", line 1, in <module>
+    from .modules import LinearFP8Mixed, LinearFP8Global
+  File "/usr/local/lib/python3.10/site-packages/bitsandbytes/research/nn/modules.py", line 8, in <module>
+    from bitsandbytes.optim import GlobalOptimManager
+  File "/usr/local/lib/python3.10/site-packages/bitsandbytes/optim/__init__.py", line 8, in <module>
+    from .adagrad import Adagrad, Adagrad8bit, Adagrad32bit
+  File "/usr/local/lib/python3.10/site-packages/bitsandbytes/optim/adagrad.py", line 5, in <module>
+    from bitsandbytes.optim.optimizer import Optimizer1State
+  File "/usr/local/lib/python3.10/site-packages/bitsandbytes/optim/optimizer.py", line 12, in <module>
+    import bitsandbytes.functional as F
+  File "/usr/local/lib/python3.10/site-packages/bitsandbytes/functional.py", line 12, in <module>
+    from scipy.stats import norm
+ModuleNotFoundError: No module named 'scipy'
+2025-04-18 12:41:18,482 - root - ERROR - Failed to initialize LLM: No module named 'scipy'
+Traceback (most recent call last):
+  File "/app/app/llm_manager.py", line 75, in initialize
+    self._initialize_transformers_model()
+  File "/app/app/llm_manager.py", line 159, in _initialize_transformers_model
+    self.model = AutoModelForCausalLM.from_pretrained(
+  File "/usr/local/lib/python3.10/site-packages/transformers/models/auto/auto_factory.py", line 484, in from_pretrained
+    return model_class.from_pretrained(
+  File "/usr/local/lib/python3.10/site-packages/transformers/modeling_utils.py", line 2685, in from_pretrained
+    from .utils.bitsandbytes import get_keys_to_not_convert, replace_with_bnb_linear
+  File "/usr/local/lib/python3.10/site-packages/transformers/utils/bitsandbytes.py", line 11, in <module>
+    import bitsandbytes as bnb
+  File "/usr/local/lib/python3.10/site-packages/bitsandbytes/__init__.py", line 6, in <module>
+    from . import cuda_setup, utils, research
+  File "/usr/local/lib/python3.10/site-packages/bitsandbytes/research/__init__.py", line 1, in <module>
+    from . import nn
+  File "/usr/local/lib/python3.10/site-packages/bitsandbytes/research/nn/__init__.py", line 1, in <module>
+    from .modules import LinearFP8Mixed, LinearFP8Global
+  File "/usr/local/lib/python3.10/site-packages/bitsandbytes/research/nn/modules.py", line 8, in <module>
+    from bitsandbytes.optim import GlobalOptimManager
+  File "/usr/local/lib/python3.10/site-packages/bitsandbytes/optim/__init__.py", line 8, in <module>
+    from .adagrad import Adagrad, Adagrad8bit, Adagrad32bit
+  File "/usr/local/lib/python3.10/site-packages/bitsandbytes/optim/adagrad.py", line 5, in <module>
+    from bitsandbytes.optim.optimizer import Optimizer1State
+  File "/usr/local/lib/python3.10/site-packages/bitsandbytes/optim/optimizer.py", line 12, in <module>
+    import bitsandbytes.functional as F
+  File "/usr/local/lib/python3.10/site-packages/bitsandbytes/functional.py", line 12, in <module>
+    from scipy.stats import norm
+ModuleNotFoundError: No module named 'scipy'
+2025-04-18 12:41:18,483 - root - WARNING - Initializing fallback model (GPT-2 small)
+2025-04-18 12:41:22,440 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2025-04-18 12:41:57,410 - root - INFO - Fallback model initialized successfully
+2025-04-18 12:41:57,443 - root - ERROR - Error enhancing prompt: "LayerNormKernelImpl" not implemented for 'Half'
+Traceback (most recent call last):
+  File "/app/app/llm_manager.py", line 230, in enhance_prompt
+    output = self.pipe(input_text, max_new_tokens=256, temperature=0.7)
+  File "/usr/local/lib/python3.10/site-packages/transformers/pipelines/text_generation.py", line 201, in __call__
+    return super().__call__(text_inputs, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/transformers/pipelines/base.py", line 1120, in __call__
+    return self.run_single(inputs, preprocess_params, forward_params, postprocess_params)
+  File "/usr/local/lib/python3.10/site-packages/transformers/pipelines/base.py", line 1127, in run_single
+    model_outputs = self.forward(model_inputs, **forward_params)
+  File "/usr/local/lib/python3.10/site-packages/transformers/pipelines/base.py", line 1026, in forward
+    model_outputs = self._forward(model_inputs, **forward_params)
+  File "/usr/local/lib/python3.10/site-packages/transformers/pipelines/text_generation.py", line 263, in _forward
+    generated_sequence = self.model.generate(input_ids=input_ids, attention_mask=attention_mask, **generate_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/transformers/generation/utils.py", line 1572, in generate
+    return self.sample(
+  File "/usr/local/lib/python3.10/site-packages/transformers/generation/utils.py", line 2619, in sample
+    outputs = self(
+  File "/usr/local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1080, in forward
+    transformer_outputs = self.transformer(
+  File "/usr/local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 903, in forward
+    outputs = block(
+  File "/usr/local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 390, in forward
+    hidden_states = self.ln_1(hidden_states)
+  File "/usr/local/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/torch/nn/modules/normalization.py", line 190, in forward
+    return F.layer_norm(
+  File "/usr/local/lib/python3.10/site-packages/torch/nn/functional.py", line 2515, in layer_norm
+    return torch.layer_norm(input, normalized_shape, weight, bias, eps, torch.backends.cudnn.enabled)
+RuntimeError: "LayerNormKernelImpl" not implemented for 'Half'
+2025-04-18 12:41:57,448 - root - INFO - Generating image from prompt: Design a cyberpunk city skyline at night with dramatic lighting, detailed textures, and vibrant colors
+2025-04-18 12:41:57,452 - root - ERROR - Error in pipeline: Input schema not found for app ID: f0997a01-d6d3-a5fe-53d8-561300318557
+2025-04-18 12:41:57,453 - root - ERROR - Pipeline error: Input schema not found for app ID: f0997a01-d6d3-a5fe-53d8-561300318557
+2025-04-18 12:41:57,455 - root - INFO - Response prepared: 90 characters
+2025-04-18 12:41:57,457 - werkzeug - INFO - 172.21.0.1 - - [18/Apr/2025 12:41:57] "POST /execute HTTP/1.1" 200 -

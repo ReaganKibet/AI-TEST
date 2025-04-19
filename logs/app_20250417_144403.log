@@ -1,0 +1,13 @@
+2025-04-17 14:44:03,494 - root - INFO - ==================================================
+2025-04-17 14:44:03,494 - root - INFO - Application starting up
+2025-04-17 14:44:03,495 - root - INFO - Log file: logs/app_20250417_144403.log
+2025-04-17 14:44:03,495 - root - INFO - ==================================================
+2025-04-17 14:44:03,518 - root - INFO - Memory database initialized successfully
+2025-04-17 14:44:03,711 - werkzeug - WARNING -  * Debugger is active!
+2025-04-17 14:44:03,716 - werkzeug - INFO -  * Debugger PIN: 133-084-276
+2025-04-17 14:46:30,543 - werkzeug - INFO - 172.21.0.1 - - [17/Apr/2025 14:46:30] "[33mGET /swagger-ui/ HTTP/1.1[0m" 404 -
+2025-04-17 14:46:30,855 - werkzeug - INFO - 172.21.0.1 - - [17/Apr/2025 14:46:30] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-17 14:55:50,908 - werkzeug - INFO - 172.21.0.1 - - [17/Apr/2025 14:55:50] "[33mGET / HTTP/1.1[0m" 404 -
+2025-04-17 14:55:51,134 - werkzeug - INFO - 172.21.0.1 - - [17/Apr/2025 14:55:51] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-17 14:57:58,100 - werkzeug - INFO - 172.21.0.1 - - [17/Apr/2025 14:57:58] "[33mGET /api HTTP/1.1[0m" 404 -
+2025-04-17 14:58:25,247 - werkzeug - INFO - 172.21.0.1 - - [17/Apr/2025 14:58:25] "[33mGET /swagger HTTP/1.1[0m" 404 -

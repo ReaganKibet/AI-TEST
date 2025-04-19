@@ -1,0 +1,19 @@
+2025-04-18 11:40:44,646 - root - INFO - ==================================================
+2025-04-18 11:40:44,647 - root - INFO - Application starting up
+2025-04-18 11:40:44,648 - root - INFO - Log file: logs/app_20250418_114044.log
+2025-04-18 11:40:44,648 - root - INFO - ==================================================
+2025-04-18 11:40:44,690 - root - INFO - Memory database initialized successfully
+2025-04-18 11:40:44,721 - werkzeug - WARNING -  * Debugger is active!
+2025-04-18 11:40:44,728 - werkzeug - INFO -  * Debugger PIN: 819-334-325
+2025-04-18 11:40:52,009 - werkzeug - INFO - 172.21.0.1 - - [18/Apr/2025 11:40:52] "GET /swagger-ui/ HTTP/1.1" 200 -
+2025-04-18 11:40:52,078 - werkzeug - INFO - 172.21.0.1 - - [18/Apr/2025 11:40:52] "GET /flask-apispec/static/swagger-ui.css HTTP/1.1" 200 -
+2025-04-18 11:40:52,083 - werkzeug - INFO - 172.21.0.1 - - [18/Apr/2025 11:40:52] "GET /flask-apispec/static/swagger-ui-standalone-preset.js HTTP/1.1" 200 -
+2025-04-18 11:40:52,548 - werkzeug - INFO - 172.21.0.1 - - [18/Apr/2025 11:40:52] "GET /flask-apispec/static/swagger-ui-bundle.js HTTP/1.1" 200 -
+2025-04-18 11:40:52,669 - werkzeug - INFO - 172.21.0.1 - - [18/Apr/2025 11:40:52] "GET /swagger.json HTTP/1.1" 200 -
+2025-04-18 11:40:52,792 - werkzeug - INFO - 172.21.0.1 - - [18/Apr/2025 11:40:52] "GET /flask-apispec/static/favicon-32x32.png HTTP/1.1" 200 -
+2025-04-18 11:41:55,375 - root - ERROR - Error in /execute endpoint: AppModel() takes no arguments
+Traceback (most recent call last):
+  File "/app/app/main.py", line 305, in execute_endpoint
+    model = AppModel(request=InputClass(prompt=input_data["prompt"]))
+TypeError: AppModel() takes no arguments
+2025-04-18 11:41:55,377 - werkzeug - INFO - 172.21.0.1 - - [18/Apr/2025 11:41:55] "[35m[1mPOST /execute HTTP/1.1[0m" 500 -

@@ -1,0 +1,9 @@
+2025-04-17 15:08:55,333 - root - INFO - ==================================================
+2025-04-17 15:08:55,334 - root - INFO - Application starting up
+2025-04-17 15:08:55,334 - root - INFO - Log file: logs/app_20250417_150855.log
+2025-04-17 15:08:55,335 - root - INFO - ==================================================
+2025-04-17 15:08:55,371 - root - INFO - Memory database initialized successfully
+2025-04-17 15:08:55,602 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2025-04-17 15:08:55,603 - werkzeug - INFO -  * Running on http://172.21.0.2:8888/ (Press CTRL+C to quit)
+2025-04-17 15:08:55,604 - werkzeug - INFO -  * Restarting with stat
